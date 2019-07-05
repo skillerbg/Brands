@@ -1,0 +1,24 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+brand_list:
+  # Matches /brand exactly
+  path:     /brand
+  controller: App\Controller\BrandsController::list
+
+brand_show:
+  # Matches /brand/*
+  # but not /brand/slug/extra-part
+  path:     /brand/{slug}
+  controller: App\Controller\BrandsController::show
+
+create_review:
+  # Matches /review/*
+  # but not /review/slug/extra-part
+  path:     /review/{slug}
+  controller: App\Controller\ReviewsController::newReview
+
+brand_search:
+  # Matches /search exactly
+  path:     /search
+  controller: App\Controller\BrandsController::search

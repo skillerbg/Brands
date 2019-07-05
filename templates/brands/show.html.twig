@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+ <p>  Brand Name: {{ brand.brandName|nl2br }}</p>
+    <p>   Brand Logo: {{ brand.logo |nl2br}}</p>
+    <p> Rating: {{ brand.rating|nl2br }}</p>
+    <a href="{{ path('create_review', {'slug': brand.id}) }}">button</a>
+   {% for review in reviews %}
+      <p> Posted by: {{ review.getUserId|nl2br }} Review: {{ review.comment|nl2br }}  Rating: {{ review.stars|nl2br }}</p>
+
+   {% endfor %}
+
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+

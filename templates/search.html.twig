@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+ <table>
+   {% for brands in brand %}
+   <tr>
+<td>  Brand Name: {{ brands.Brand_id|nl2br }}</td>
+    <td>   Brand Logo: {{ brands.review_id |nl2br}}</td>
+    <td> Rating: {{ brands.average_rating|nl2br }}</td>
+    </tr>
+   {% endfor %}
+</table>
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+
