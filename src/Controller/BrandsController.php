@@ -85,7 +85,7 @@ class BrandsController extends AbstractController
      *  @return Response
      */
     public function search(Request $request){
-        $sql1="SELECT b.id as Brand_id, r.id as review_id, r.`comment` as review_comment ,r.stars as stars ,
+        $sql1="SELECT b.id as Brand_id, b.brand_name as Brand_name, r.id as review_id, r.`comment` as review_comment ,r.stars as stars ,
         SUM(stars) as total_stars, 
         COUNT(*) as total_reviews, 
         cast(SUM(stars)/COUNT(*) AS DECIMAL(5,1))
@@ -97,7 +97,6 @@ class BrandsController extends AbstractController
         ";
         $sql2="";
             if( $filter=$request->query->get('filter')){
-
                 if(! count( array_filter( $filter)) == 0) {
                     $sql2="WHERE ";
                     if($filter["gender"]=="f"){
@@ -130,9 +129,22 @@ $stmt = $conn->prepare($sql);
 $stmt->execute();
 
 $result=$stmt->fetchAll();
-    return $this->render('search.html.twig', ['brand' => $result]);
+
+
+    return $this->render('search_result.html.twig', ['brand' => $result]);
 
     }
+
+     /**
+     * @param Request $request
+     * @Route("/search_page", name="searchPage")
+     *  @return Response
+     */
+    public function searchPage(Request $request){
+        return $this->render('search.html.twig',['request' => $request]);
+
+    }
+
 
     /**
      * @param Request $request
@@ -145,7 +157,6 @@ $result=$stmt->fetchAll();
 
         $em = $this->getDoctrine()->getManager();
        $brand= $em->getRepository(Brands::class)->findByRating();
-        // var_dump($brand);
             return $this->render('brands/topTen.html.twig', [
                 'brand' => $brand
             ]);

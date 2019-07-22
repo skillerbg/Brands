@@ -1,16 +1,54 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
 
- <table>
-   {% for brands in brand %}
-   <tr>
-<td>  Brand Name: {{ brands.Brand_id|nl2br }}</td>
-    <td>   Brand Logo: {{ brands.review_id |nl2br}}</td>
-    <td> Rating: {{ brands.average_rating|nl2br }}</td>
-    </tr>
-   {% endfor %}
-</table>
+{% block body %}
+ <form class="form-horizontal" action="{{ path('searchPage') }}" method="GET">
+                <fieldset>
+
+                     <div class="form-group">
+                        <div class="col-sm-6">
+                                             
+                           <input type="hidden" name="filter[gender]" class="form-control" value="all" checked> <br>
+                            <input type="checkbox" name="filter[gender]" class="form-control" value="m"> Male<br>
+                            <input type="checkbox" name="filter[gender]" class="form-control" value="f"> Famale<br>
+
+                        </div>
+                    </div>
+
+                      <div class="form-group">
+                        <label class="col-sm-4 control-label" for="kcal">Min age:</label>
+                        <div class="col-sm-6">
+                            <input type="number" step="1" 
+                                   name="filter[minAge]">
+                        </div>
+                    </div>
+
+                  <div class="form-group">
+                        <label class="col-sm-4 control-label" for="kcal">Max age:</label>
+                        <div class="col-sm-6">
+                            <input type="number" step="1"
+                                   name="filter[maxAge]">
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <div class="col-sm-4 col-sm-offset-4">
+                            
+                            <button type="submit" class="btn btn-success">Filter</button>
+                        </div>
+                    </div>
+
+
+                </fieldset>
+            </form>
+
+            {% if request is defined %}
+    {{ render(controller(
+        'App\\Controller\\BrandsController::search',
+         {request: app.request}
+    )) }}
+{% endif %}
+      
+
 {% endblock %}
 
 {% block title %}

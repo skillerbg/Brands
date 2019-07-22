@@ -54,6 +54,36 @@ class Brands
      */
     private $totalReviews=0;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $Category;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $SubCategory1;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $SubCategory2;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $SubCategory3;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $SubCategory4;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $SubCategory5;
+
     public function __construct()
     {
         $this->reviews = new ArrayCollection();
@@ -163,6 +193,78 @@ class Brands
     public function setTotalReviews(?int $totalReviews): self
     {
         $this->totalReviews = $totalReviews;
+
+        return $this;
+    }
+
+    public function getCategory(): ?string
+    {
+        return $this->Category;
+    }
+
+    public function setCategory(?string $Category): self
+    {
+        $this->Category = $Category;
+
+        return $this;
+    }
+
+    public function getSubCategory1(): ?string
+    {
+        return $this->SubCategory1;
+    }
+
+    public function setSubCategory1(?string $SubCategory1): self
+    {
+        $this->SubCategory1 = $SubCategory1;
+
+        return $this;
+    }
+
+    public function getSubCategory2(): ?string
+    {
+        return $this->SubCategory2;
+    }
+
+    public function setSubCategory2(?string $SubCategory2): self
+    {
+        $this->SubCategory2 = $SubCategory2;
+
+        return $this;
+    }
+
+    public function getSubCategory3(): ?string
+    {
+        return $this->SubCategory3;
+    }
+
+    public function setSubCategory3(?string $SubCategory3): self
+    {
+        $this->SubCategory3 = $SubCategory3;
+
+        return $this;
+    }
+
+    public function getSubCategory4(): ?string
+    {
+        return $this->SubCategory4;
+    }
+
+    public function setSubCategory4(?string $SubCategory4): self
+    {
+        $this->SubCategory4 = $SubCategory4;
+
+        return $this;
+    }
+
+    public function getSubCategory5(): ?string
+    {
+        return $this->SubCategory5;
+    }
+
+    public function setSubCategory5(?string $SubCategory5): self
+    {
+        $this->SubCategory5 = $SubCategory5;
 
         return $this;
     }

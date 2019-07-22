@@ -1,6 +1,7 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+index:
+   path: /
+   controller: App\Controller\DefaultController::index
+   
 brand_list:
   # Matches /brand exactly
   path:     /brand

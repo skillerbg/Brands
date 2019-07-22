@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="70e5a904-72db-4283-a14a-c185258eebca" name="Default Changelist" comment="" />
+    <list default="true" id="70e5a904-72db-4283-a14a-c185258eebca" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/brands.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/brands.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/BrandsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BrandsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Brands.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Brands.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/BrandsType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/BrandsType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/brands/topTen.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/brands/topTen.html.twig" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +31,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/routes.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="3" selection-start-line="3" selection-end-line="3" selection-end-column="3" />
+            <state relative-caret-position="68">
+              <caret line="4" column="3" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -37,8 +49,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/BrandsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1003">
-              <caret line="65" column="38" selection-start-line="65" selection-start-column="38" selection-end-line="65" selection-end-column="38" />
+            <state relative-caret-position="1020">
+              <caret line="66" column="38" selection-start-line="66" selection-start-column="38" selection-end-line="66" selection-end-column="38" />
               <folding>
                 <element signature="e#34#56#0#PHP" expanded="true" />
               </folding>
@@ -49,8 +61,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Controller/ReviewsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="33" column="12" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="12" />
+            <state relative-caret-position="137">
+              <caret line="21" column="37" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="37" />
               <folding>
                 <element signature="e#34#56#0#PHP" expanded="true" />
               </folding>
@@ -122,6 +134,9 @@
       <find>bran</find>
       <find>bra</find>
     </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -255,13 +270,15 @@
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/type-resolver" />
       <path value="$PROJECT_DIR$/vendor/symfony/templating" />
       <path value="$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle" />
+      <path value="$PROJECT_DIR$/vendor/twbs/bootstrap" />
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="-9" />
-    <option name="width" value="974" />
-    <option name="height" value="1047" />
+    <option name="x" value="-10" />
+    <option name="width" value="975" />
+    <option name="height" value="1048" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -343,6 +360,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../KVO" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -379,16 +397,17 @@
       <workItem from="1559655383162" duration="11391000" />
       <workItem from="1561113782626" duration="8852000" />
       <workItem from="1562243440643" duration="437000" />
+      <workItem from="1563531314958" duration="182000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28517000" />
+    <option name="totallyTimeSpent" value="28699000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26066098" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26442954" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -401,7 +420,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.3286119" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" weight="0.32936078" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -561,8 +580,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/routes.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="3" selection-start-line="3" selection-end-line="3" selection-end-column="3" />
+        <state relative-caret-position="68">
+          <caret line="4" column="3" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
         </state>
       </provider>
     </entry>
@@ -575,8 +594,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/BrandsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1003">
-          <caret line="65" column="38" selection-start-line="65" selection-start-column="38" selection-end-line="65" selection-end-column="38" />
+        <state relative-caret-position="1020">
+          <caret line="66" column="38" selection-start-line="66" selection-start-column="38" selection-end-line="66" selection-end-column="38" />
           <folding>
             <element signature="e#34#56#0#PHP" expanded="true" />
           </folding>
@@ -626,8 +645,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/ReviewsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="33" column="12" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="12" />
+        <state relative-caret-position="137">
+          <caret line="21" column="37" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="37" />
           <folding>
             <element signature="e#34#56#0#PHP" expanded="true" />
           </folding>

@@ -43,6 +43,7 @@ class ReviewsController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
         $brand = $entityManager->getRepository(Brands::class)->find($brandId);
         $brand->setTotalReviews($brand->getTotalReviews()+1);
+       
         $brand->setTotalStars($brand->getTotalStars()+$newStars);
         $brand->setRating();
         $entityManager->flush();
