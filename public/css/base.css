@@ -1,4 +1,14 @@
 
+html, body{
+    
+    min-height: 100%;
+    width: 100%;
+}
+body{
+    
+    min-height: 100vh;
+    width: 100%;
+}
 div.main{
     background: #0264d6; /* Old browsers */
 background: -moz-radial-gradient(center, ellipse cover,  #0264d6 1%, #1c2b5a 100%); /* FF3.6+ */
@@ -10,4 +20,5 @@ background: radial-gradient(ellipse at center,  #0264d6 1%,#1c2b5a 100%); /* W3C
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0264d6', endColorstr='#1c2b5a',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 height:100%;
 width:100%;
+min-height: 100vh;
 }

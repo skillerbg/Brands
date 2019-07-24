@@ -13,31 +13,38 @@ class ReviewsController extends AbstractController
 {
 
     public function newReview(Request $request,$slug)
-    {   $review=new Reviews();
-        $form=$this->createForm(ReviewsType::class,$review);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
+    
+    {   
+        
+        $review=new Reviews();
+        
+
+        $params = $request->request->get('review');
+        $review->setComment($params['comment']);
+        $review->setStars($params['stars']);
+
+
+
+        if ($params) {
+            
             // $form->getData() holds the submitted values
             // but, the original `$task` variable has also been updated
-            $task = $form->getData();
-            $task->setUserId($this->getUser());
+            $review->setUserId($this->getUser());
             $entityManager = $this->getDoctrine()->getManager();
             $brand = $entityManager->getRepository(Brands::class)->find($slug);
-            $task->setBrandID($brand);
-            $task->setDate(new \DateTime());
+            $review->setBrandID($brand);
+            $review->setDate(new \DateTime());
             // ... perform some action, such as saving the task to the database
             // for example, if Task is a Doctrine entity, save it!
 
-            $this->updateRating($slug,$task->getStars());
-            $entityManager->persist($task);
+            $this->updateRating($slug,$review->getStars());
+            $entityManager->persist($review);
             $entityManager->flush();
             
 
-            return $this->redirectToRoute('create_review');
+            return $this->redirectToRoute('brand_show', array('slug' => $slug ));
         }
-        return $this->render('reviews/index.html.twig', [
-            'form' => $form->createView(),
-        ]);
+        return $this->render('reviews/index.html.twig', array('slug' => $slug ));
     }
     public function updateRating($brandId,$newStars){
         $entityManager = $this->getDoctrine()->getManager();
