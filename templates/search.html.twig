@@ -2,55 +2,86 @@
 
 
 {% block body %}
+            <link href="{{ asset('css/search.css') }}" rel="stylesheet"/>
+                        <link href="{{ asset('css/slider.css') }}" rel="stylesheet"/>
+
+           
 
 
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 
- <form class="form-horizontal" action="{{ path('searchPage') }}" method="GET">
-                <fieldset>
-
-                     <div class="form-group">
-                        <div class="col-sm-6">
-                                             
-                           <input type="hidden" name="filter[gender]" class="form-control" value="all" checked> <br>
-                            <input type="checkbox" name="filter[gender]" class="form-control" value="m"> Male<br>
-                            <input type="checkbox" name="filter[gender]" class="form-control" value="f"> Famale<br>
-
+<div class="container">
+    <div class="row">
+        <form class="col-sm-3 col-md-3" action="{{ path('searchPage') }}" method="GET">
+                 <button class="btn btn-success btn-danger  btn-block btn-compose-email">Filter Results</button>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Gender</h3>
+                        <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+                    </div> 
+                    <input type="hidden" name="filter[gender]" class="form-control" value="all" checked>
+                    <div class="panel-body" >
+                        
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="maleCheckbox" name="filter[gender]"  value="m">
+                            <label class="custom-control-label" for="maleCheckbox">male</label>
+                        </div>
+                         <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="famaleCheckbox" name="filter[gender]"  value="f">
+                            <label class="custom-control-label" for="famaleCheckbox">famale</label>
                         </div>
                     </div>
-
-                      <div class="form-group">
-                        <label class="col-sm-4 control-label" for="kcal">Min age:</label>
-                        <div class="col-sm-6">
-                            <input type="number" step="1" 
-                                   name="filter[minAge]">
-                        </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Age</h3>
+                        <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
                     </div>
-
-                  <div class="form-group">
-                        <label class="col-sm-4 control-label" for="kcal">Max age:</label>
-                        <div class="col-sm-6">
-                            <input type="number" step="1"
-                                   name="filter[maxAge]">
-                        </div>
+                    <div class="slidecontainer">
+                        <input type="range" min="1" max="100" value="0" class="slider" id="myRange" name="filter[minAge]">
+                        <p>Min age: <span id="demo"></span></p>
                     </div>
-                     <div class="form-group">
-                        <div class="col-sm-4 col-sm-offset-4">
-                            
-                            <button type="submit" class="btn btn-success">Filter</button>
-                        </div>
+                    <div class="slidecontainer">
+                        <input type="range" min="1" max="100" value="100" class="slider" id="myRange2" name="filter[maxAge]">
+                        <p>Max age: <span id="demo2"></span></p>
                     </div>
+                 </div>
+        </form>
+        <div class="col-sm-8 col-md-8">      
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Dashboard</h3>
+                   <!-- <div class="pull-right">
+                        <button type="button" class="close" aria-label="Close">
+                          <span aria-hidden="true">×</span>
+                        </button>
+                    </div>-->
+                </div>
+                <div class="panel-body">
+                   
+                   
+                    <div class="alert alert-success">
+                      {% if request is defined %}
+                      {{ render(controller(
+                     'App\\Controller\\BrandsController::search',
+                     {request: app.request}
+                      )) }}
+                    {% endif %}
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
-                </fieldset>
-            </form>
+      <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
-            {% if request is defined %}
-    {{ render(controller(
-        'App\\Controller\\BrandsController::search',
-         {request: app.request}
-    )) }}
-{% endif %}
-      
+                                                <script src="{{ asset('js/slider.js')  }}" type="text/javascript"></script>
+
 
 {% endblock %}
 

@@ -85,7 +85,7 @@ class BrandsController extends AbstractController
      *  @return Response
      */
     public function search(Request $request){
-        $sql1="SELECT b.id as Brand_id, b.brand_name as Brand_name, r.id as review_id, r.`comment` as review_comment ,r.stars as stars ,
+        $sql1="SELECT b.id as Brand_id, b.brand_name as Brand_name, b.logo as logo, r.id as review_id, r.`comment` as review_comment ,r.stars as stars ,
         SUM(stars) as total_stars, 
         COUNT(*) as total_reviews, 
         cast(SUM(stars)/COUNT(*) AS DECIMAL(5,1))
@@ -108,12 +108,16 @@ class BrandsController extends AbstractController
                         $sql2=$sql2."gender = 'm'";
                     }
                     if($filter["minAge"]){
+                        $minAge=intval($filter["minAge"]);
+                        
                         if(strlen($sql2)>10){$sql2=$sql2." AND ";}
-                        $sql2=$sql2."age > '{$filter["minAge"]}'";
+                        $sql2=$sql2."age > '{$minAge}'";
                     }
                     if($filter["maxAge"]){
+                        $maxAge=intval($filter["maxAge"]);
+
                         if(strlen($sql2)>10){$sql2=$sql2." AND ";}
-                        $sql2=$sql2."age < '{$filter["maxAge"]}'";
+                        $sql2=$sql2."age < '{$maxAge}'";
                     }
 
                    
@@ -121,7 +125,10 @@ class BrandsController extends AbstractController
         }
     
   
-    $sql3="GROUP BY b.id;";
+    $sql3="
+    GROUP BY b.id
+    ORDER BY average_rating DESC;
+    ";
     $sql=$sql1.$sql2.$sql3;
 $em = $this->getDoctrine()->getManager();
 $conn = $em->getConnection();
