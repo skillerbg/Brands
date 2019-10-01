@@ -23,3 +23,13 @@ brand_search:
   # Matches /search exactly
   path:     /search
   controller: App\Controller\BrandsController::search
+
+brands_create:
+  # Matches /brands_create exactly
+  path:     /brands_create
+  controller: App\Controller\BrandsController::createBrand
+
+search_page:
+  # Matches /search_page exactly
+  path:     /search_page
+  controller: App\Controller\BrandsController::searchPage

@@ -83,7 +83,10 @@ class BrandsType extends AbstractType
                 ])
           
             ->add('user_id',HiddenType::class)
-            ->add('save', SubmitType::class)
+            ->add('submit', SubmitType::class, [
+                'label' => 'Create',
+                'attr' => ['class' => 'btn btn btn-primary', 'type' => 'button', 'id' => 'button-id-signup'],
+            ]);
 
         ;
     }

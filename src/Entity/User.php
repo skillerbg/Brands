@@ -26,6 +26,21 @@ class User extends BaseUser
      */
     private $age;
 
+     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $household;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $education;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $employment;
+
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
@@ -72,6 +87,46 @@ class User extends BaseUser
 
         return $this;
     }
+
+    
+    public function getHousehold(): ?string
+    {
+        return $this->household;
+    }
+
+    public function setHousehold(?string $household): self
+    {
+        $this->household = $household;
+
+        return $this;
+    }
+
+    
+    public function getEducation(): ?string
+    {
+        return $this->education;
+    }
+
+    public function setEducation(?string $education): self
+    {
+        $this->education = $education;
+
+        return $this;
+    }
+
+    
+    public function getEmployment(): ?string
+    {
+        return $this->employment;
+    }
+
+    public function setEmployment(?string $employment): self
+    {
+        $this->employment = $employment;
+
+        return $this;
+    }
+
 
     /**
      * @return Collection|Brands[]
