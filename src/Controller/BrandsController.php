@@ -236,12 +236,12 @@ class BrandsController extends AbstractController
         }
       
 
-       
+        if(strlen($sql2)>10){
            
             $sql2 = substr_replace($sql2, "(", 5, 0);
-
+                
            $sql2=$sql2.")";
-
+        }
         
 
 

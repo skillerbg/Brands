@@ -80,7 +80,11 @@
 
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 <div id="flipkart-navbar" >
-    
+    <div class="" >
+        <a class="navbar-brand" style="padding-left: 10px; padding-top: 20px;" href="{{path('index')}}">
+          <img class="img-fluid img-thumbnail" src="{{ asset('images/brandRatingsLogo2.png') }}" alt="">
+        </a>
+    </div>
         <div class="row row1" >
             <ul  class="largenav pull-right">
                 <li class="upper-links"><a class="links" href="{{path('index')}}">Home</a></li>
@@ -101,11 +105,8 @@
                 </li>
             </ul>
         </div>
-        <div class="row row2">
-            <div  class="col-sm-2">
-                <h2 style="margin:0px;"><span class="smallnav menu" onclick="openNav()">☰ Brands</span></h2>
-                <h1 style="margin:0px;"><span class="largenav">Brands</span></h1>
-            </div>
+        <div class="row row2" style="padding-left: 10px;">
+            
             <div class="flipkart-navbar-search smallsearch col-sm-8 col-xs-11">
                 <div class="row">
                     
