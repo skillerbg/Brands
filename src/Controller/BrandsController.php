@@ -96,40 +96,161 @@ class BrandsController extends AbstractController
        
         ";
         $sql2="";
+        
             if( $filter=$request->query->get('filter')){
                 if(! count( array_filter( $filter)) == 0) {
                     $sql2="WHERE ";
-                    if($filter["gender"]=="f"){
-                        if(strlen($sql2)>10){$sql2=$sql2." AND ";}
-                        $sql2=$sql2."gender = 'f'";
+                   
+                    if( $keyWords=$filter["keyWords"]){
+                       
+                        $sql2=$sql2." Brand_name LIKE '%".$keyWords."%'";
+            
+                    };
+                    $filterOption="gender";
+                    $andOr=')AND(';
+                    
+                    if(in_array("f", $filter[$filterOption])){
+                        if(strlen($sql2)>10){$sql2=$sql2." ".$andOr." ";}
+                        $andOr="OR";
+                        $sql2=$sql2.$filterOption." = 'f'";
                     }
-                    if($filter["gender"]=="m"){
-                        if(strlen($sql2)>10){$sql2=$sql2." AND ";}
-                        $sql2=$sql2."gender = 'm'";
+                    if(in_array("m", $filter[$filterOption])){
+                        if(strlen($sql2)>10){$sql2=$sql2." ".$andOr." ";}
+                        $andOr="OR";
+                        $sql2=$sql2.$filterOption." = 'm'";
                     }
+                    $filterOption="household";
+                    $andOr=')AND(';
+                    if(in_array("single", $filter[$filterOption])){
+                       if(strlen($sql2)>10){$sql2=$sql2." ".$andOr." ";}
+                        $andOr="OR";
+                        $sql2=$sql2.$filterOption."= 'single'";
+                    }
+                    if(in_array("maried", $filter[$filterOption])){
+                       if(strlen($sql2)>10){$sql2=$sql2." ".$andOr." ";}
+                        $andOr="OR";
+                        $sql2=$sql2.$filterOption." = 'maried'";
+                    }
+                    if(in_array("widowed", $filter[$filterOption])){
+                       if(strlen($sql2)>10){$sql2=$sql2." ".$andOr." ";}
+                        $andOr="OR";
+                        $sql2=$sql2.$filterOption." = 'widowed'";
+                    }
+                    if(in_array("divorced", $filter[$filterOption])){
+                       if(strlen($sql2)>10){$sql2=$sql2." ".$andOr." ";}
+                        $andOr="OR";
+                        $sql2=$sql2.$filterOption." = 'divorced'";
+                    }
+                    if(in_array("separated", $filter[$filterOption])){
+                       if(strlen($sql2)>10){$sql2=$sql2." ".$andOr." ";}
+                        $andOr="OR";
+                        $sql2=$sql2.$filterOption." = 'separated'";
+                    }
+                    $filterOption="employment";
+                    $andOr=')AND(';
+                    if(in_array("employed", $filter[$filterOption])){
+                       if(strlen($sql2)>10){$sql2=$sql2." ".$andOr." ";}
+                        $andOr="OR";
+                        $sql2=$sql2.$filterOption." = 'employed'";
+                    }
+                    if(in_array("self", $filter[$filterOption])){
+                       if(strlen($sql2)>10){$sql2=$sql2." ".$andOr." ";}
+                        $andOr="OR";
+                        $sql2=$sql2.$filterOption." = 'self'";
+                    }
+                    if(in_array("unemployed", $filter[$filterOption])){
+                       if(strlen($sql2)>10){$sql2=$sql2." ".$andOr." ";}
+                        $andOr="OR";
+                        $sql2=$sql2.$filterOption." = 'unemployed'";
+                    }
+                    if(in_array("student", $filter[$filterOption])){
+                       if(strlen($sql2)>10){$sql2=$sql2." ".$andOr." ";}
+                        $andOr="OR";
+                        $sql2=$sql2.$filterOption." = 'student'";
+                    }
+                    if(in_array("retired", $filter[$filterOption])){
+                       if(strlen($sql2)>10){$sql2=$sql2." ".$andOr." ";}
+                        $andOr="OR";
+                        $sql2=$sql2.$filterOption." = 'retired'";
+                    }
+                    if(in_array("unable", $filter[$filterOption])){
+                       if(strlen($sql2)>10){$sql2=$sql2." ".$andOr." ";}
+                        $andOr="OR";
+                        $sql2=$sql2.$filterOption." = 'unable'";
+                    }
+
+                    $filterOption="education";
+                    $andOr=')AND(';
+                    
+                    if(in_array("middle", $filter[$filterOption])){
+                       if(strlen($sql2)>10){$sql2=$sql2." ".$andOr." ";}
+                        $andOr="OR";
+                        $sql2=$sql2.$filterOption." = 'middle'";
+                    }
+                    if(in_array("high", $filter[$filterOption])){
+                       if(strlen($sql2)>10){$sql2=$sql2." ".$andOr." ";}
+                        $andOr="OR";
+                        $sql2=$sql2.$filterOption." = 'high'";
+                    }
+                    if(in_array("college", $filter[$filterOption])){
+                       if(strlen($sql2)>10){$sql2=$sql2." ".$andOr." ";}
+                        $andOr="OR";
+                        $sql2=$sql2.$filterOption." = 'college'";
+                    }
+                    if(in_array("bachelor", $filter[$filterOption])){
+                       if(strlen($sql2)>10){$sql2=$sql2." ".$andOr." ";}
+                        $andOr="OR";
+                        $sql2=$sql2.$filterOption." = 'bachelor'";
+                    }
+                    if(in_array("master", $filter[$filterOption])){
+                       if(strlen($sql2)>10){$sql2=$sql2." ".$andOr." ";}
+                        $andOr="OR";
+                        $sql2=$sql2.$filterOption." = 'master'";
+                    }
+                    if(in_array("pro", $filter[$filterOption])){
+                       if(strlen($sql2)>10){$sql2=$sql2." ".$andOr." ";}
+                        $andOr="OR";
+                        $sql2=$sql2.$filterOption." = 'pro'";
+                    }
+                    if(in_array("doc", $filter[$filterOption])){
+                       if(strlen($sql2)>10){$sql2=$sql2." ".$andOr." ";}
+                        $andOr="OR";
+                        $sql2=$sql2.$filterOption." = 'doc'";
+                    }
+
                     if($filter["minAge"]){
                         $minAge=intval($filter["minAge"]);
                         
-                        if(strlen($sql2)>10){$sql2=$sql2." AND ";}
+                    if(strlen($sql2)>10){$sql2=$sql2." )AND( ";}
                         $sql2=$sql2."age > '{$minAge}'";
                     }
                     if($filter["maxAge"]){
                         $maxAge=intval($filter["maxAge"]);
 
-                        if(strlen($sql2)>10){$sql2=$sql2." AND ";}
+                    if(strlen($sql2)>10){$sql2=$sql2." )AND( ";}
                         $sql2=$sql2."age < '{$maxAge}'";
                     }
 
                    
                 };
         }
-    
-  
+      
+
+       
+           
+            $sql2 = substr_replace($sql2, "(", 5, 0);
+
+           $sql2=$sql2.")";
+
+        
+
+
     $sql3="
     GROUP BY b.id
     ORDER BY average_rating DESC;
     ";
     $sql=$sql1.$sql2.$sql3;
+   
 $em = $this->getDoctrine()->getManager();
 $conn = $em->getConnection();
 $stmt = $conn->prepare($sql);

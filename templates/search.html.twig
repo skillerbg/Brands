@@ -13,24 +13,138 @@
 <!------ Include the above in your HEAD tag ---------->
 
 <div class="container">
+       
     <div class="row">
         <form class="col-sm-3 col-md-3" action="{{ path('searchPage') }}" method="GET">
+        
                  <button class="btn btn-success btn-danger  btn-block btn-compose-email">Filter Results</button>
+                                      <input class="form-control" name="filter[keyWords]" type="text" placeholder="Search" aria-label="Search">
+
                 <div class="panel panel-default">
+
                     <div class="panel-heading">
+
                         <h3 class="panel-title">Gender</h3>
                         <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
                     </div> 
-                    <input type="hidden" name="filter[gender]" class="form-control" value="all" checked>
+                    
+                    <input type="hidden" name="filter[gender][]" class="form-control" value="all" checked>
                     <div class="panel-body" >
                         
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="maleCheckbox" name="filter[gender]"  value="m">
-                            <label class="custom-control-label" for="maleCheckbox">male</label>
+                            <input type="checkbox" class="custom-control-input" id="maleCheckbox" name="filter[gender][]"  value="m">
+                            <label class="custom-control-label" for="maleCheckbox">Male</label>
                         </div>
                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="famaleCheckbox" name="filter[gender]"  value="f">
-                            <label class="custom-control-label" for="famaleCheckbox">famale</label>
+                            <input type="checkbox" class="custom-control-input" id="famaleCheckbox" name="filter[gender][]"  value="f">
+                            <label class="custom-control-label" for="famaleCheckbox">Famale</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Household</h3>
+                        <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+                    </div> 
+                    <input type="hidden" name="filter[household][]" class="form-control" value="all" checked>
+                    <div class="panel-body" >
+                        
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="singleCheckbox" name="filter[household][]"  value="single">
+                            <label class="custom-control-label" for="singleCheckbox">Single</label>
+                        </div>
+                         <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="mariedCheckbox" name="filter[household][]"  value="maried">
+                            <label class="custom-control-label" for="mariedCheckbox">Maried or domestic partnership</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="widowedCheckbox" name="filter[household][]"  value="widowed">
+                            <label class="custom-control-label" for="widowedCheckbox">Widowed</label>
+                        </div>
+                         <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="divorcedCheckbox" name="filter[household][]"  value="divorced">
+                            <label class="custom-control-label" for="divorcedCheckbox">Divorced</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="separatedCheckbox" name="filter[household][]"  value="separated">
+                            <label class="custom-control-label" for="separatedCheckbox">Separated</label>
+                        </div>
+                         
+                    </div>
+                </div>
+
+<div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Employment</h3>
+                        <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+                    </div> 
+                    <input type="hidden" name="filter[employment][]" class="form-control" value="all" checked>
+                    <div class="panel-body" >
+                        
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="employedCheckbox" name="filter[employment][]"  value="employed">
+                            <label class="custom-control-label" for="employedCheckbox">Employed</label>
+                        </div>
+                         <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="selfCheckbox" name="filter[employment][]"  value="self">
+                            <label class="custom-control-label" for="selfCheckbox">Self-employed</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="unemployedCheckbox" name="filter[employment][]"  value="unemployed">
+                            <label class="custom-control-label" for="unemployedCheckbox">Unemployed</label>
+                        </div>
+                         <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="studentCheckbox" name="filter[employment][]"  value="student">
+                            <label class="custom-control-label" for="studentCheckbox">Student</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="retiredCheckbox" name="filter[employment][]"  value="retired">
+                            <label class="custom-control-label" for="retiredCheckbox">Retired</label>
+                        </div>
+                         <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="unableCheckbox" name="filter[employment][]"  value="unable">
+                            <label class="custom-control-label" for="unableCheckbox">Unable to work</label>
+                        </div>
+                    </div>
+                </div>
+
+
+<div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Education</h3>
+                        <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+                    </div> 
+                    <input type="hidden" name="filter[education][]" class="form-control" value="all" checked>
+                    <div class="panel-body" >
+                        
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="middleCheckbox" name="filter[education][]"  value="middle">
+                            <label class="custom-control-label" for="middleCheckbox">Middle school graduate</label>
+                        </div>
+                         <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="highCheckbox" name="filter[education][]"  value="high">
+                            <label class="custom-control-label" for="highCheckbox">High school graduate</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="collegeCheckbox" name="filter[education][]"  value="college">
+                            <label class="custom-control-label" for="collegeCheckbox">Some college credi</label>
+                        </div>
+                         <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="bachelorCheckbox" name="filter[education][]"  value="bachelor">
+                            <label class="custom-control-label" for="bachelorCheckbox">Bachelor’s degree</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="masterCheckbox" name="filter[education][]"  value="master">
+                            <label class="custom-control-label" for="masterCheckbox">Master’s degree</label>
+                        </div>
+                         <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="proCheckbox" name="filter[education][]"  value="pro">
+                            <label class="custom-control-label" for="proCheckbox">Professional degree</label>
+                        </div>
+                         <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="docCheckbox" name="filter[education][]"  value="doc">
+                            <label class="custom-control-label" for="docCheckbox">Doctorate degree</label>
                         </div>
                     </div>
                 </div>
