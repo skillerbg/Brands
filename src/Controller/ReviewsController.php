@@ -44,7 +44,7 @@ class ReviewsController extends AbstractController
 
             return $this->redirectToRoute('brand_show', array('slug' => $slug ));
         }
-        return $this->render('reviews/index.html.twig', array('slug' => $slug ));
+        return $this->render('browse/reviews.html.twig', array('slug' => $slug ));
     }
     public function updateRating($brandId,$newStars){
         $entityManager = $this->getDoctrine()->getManager();

@@ -22,7 +22,7 @@ class SearchController extends AbstractController
      */
     public function create(Request $request)
     {
-      return $this->render('search_field/search_field.html.twig');
+      return $this->render('index/navBar/search_field.html.twig');
 
     }
  /**

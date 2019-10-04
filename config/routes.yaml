@@ -1,11 +1,6 @@
 index:
    path: /
    controller: App\Controller\DefaultController::index
-   
-brand_list:
-  # Matches /brand exactly
-  path:     /brand
-  controller: App\Controller\BrandsController::list
 
 brand_show:
   # Matches /brand/*
@@ -22,7 +17,7 @@ create_review:
 brand_search:
   # Matches /search exactly
   path:     /search
-  controller: App\Controller\BrandsController::search
+  controller: App\Controller\BrowseController::search
 
 brands_create:
   # Matches /brands_create exactly
@@ -32,4 +27,4 @@ brands_create:
 search_page:
   # Matches /search_page exactly
   path:     /search_page
-  controller: App\Controller\BrandsController::searchPage
+  controller: App\Controller\BrowseController::searchPage
