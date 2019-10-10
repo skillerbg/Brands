@@ -26,14 +26,13 @@
                                 data:{query:query},
                                 dataType:"json",
                                     success:function(data)
-                        {console.log(data);
+                        {
                             result($j.map(data, function(item){
                                 
                                 var productNames = [];
 
                                 $j.each(item, function(index, product) {
-                                    console.log(item);
-                                    productNames.push(product.brand_name);
+                                    productNames.push(product.brand_name + "#" + product.id + "#" + product.logo);
                                 });
 
                                 return productNames;
@@ -44,25 +43,24 @@
                         },
 
                         highlighter: function(item) {
-                            console.log(item);
                              var parts = item.split('#'),
-                                html = '<div><div class="typeahead-inner" id="' + parts[0] + '">';
-                            html += '<div class="item-body">';
-                            html += '<p class="item-heading">' + parts[0] + '</p>';
-                            html += '</div>';
-                            html += '</div><hr></div>'; 
+                              html = '<div class="typeahead" style="width: 200px;">';
+                                html += '<div class="media"><a class="pull-left" href="#"><img src="' + parts[2] + '"  width="80" height="80" alt="img"/></a>'
+                                html += '<div class="media-body">';
+                                html += '<p class="media-heading font-weight-bold">'+parts[0]+'</p>';
+                                html += '</div>';
+                                html += '</div>';
 
 
 
                             return html;
                         } , afterSelect: function (item) {
-                            console.log(item);
                             console.log('afterSelect: ' + item.id);
                             $j('.hiddenid').val(item.id); }
                          ,
                         updater: function(item) {
                             var parts = item.split('#');
-                            window.location.assign("http://127.0.0.1:8000/recipe/view/"+parts[2]) ;
+                            window.location.assign("http://127.0.0.1:8000/brand/"+parts[1]) ;
 
                             return item={name:parts[0], id:parts[2]};
 

@@ -46,7 +46,39 @@
                             <div class="card">
                                 <div class="card-body text-center mt-4">
                                     <h4 class="card-title">{{ brands.brandname|nl2br }}</h4>
-                                    <p class="card-text">This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.</p>
+                                                                          
+                                     <div class="row" style="width: 350px;">
+                                            <div class="col-md-6">
+                                                <label>Products</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p> Products</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Founded</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p> Founded</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Country</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p> Country</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Owner</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p> Owner</p>
+                                            </div>
+                                        </div>
                                     <ul class="list-inline">
                                         <li class="list-inline-item">
                                             <a class="social-icon text-xs-center" target="_blank" href="#">
@@ -79,6 +111,5 @@
             {% endfor %}
 
 </div>
-    <script src="{{ asset('js/index.js')  }}" type="text/javascript"></script>
 
 {% endblock %}

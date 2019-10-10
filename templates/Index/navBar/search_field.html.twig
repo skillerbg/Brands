@@ -6,69 +6,7 @@
   
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
-<script>
-            var $j = jQuery.noConflict();
-            var productNames = [];
 
-            $j(document).ready(function(){
-
-                $j('.search').each(function() {
-                    $j(this).typeahead({
-
-                        source: function(query, result)
-                        {
-                            $j.ajax({
-                                url: '{{ path('searching') }}',
-                                method:"POST",
-                                data:{query:query},
-                                dataType:"json",
-                                    success:function(data)
-                        {console.log(data);
-                            result($j.map(data, function(item){
-                                
-                                var productNames = [];
-
-                                $j.each(item, function(index, product) {
-                                    console.log(item);
-                                    productNames.push(product.brand_name);
-                                });
-
-                                return productNames;
-                            }));
-
-                                }
-                            })
-                        },
-
-                        highlighter: function(item) {
-                            console.log(item);
-                             var parts = item.split('#'),
-                                html = '<div><div class="typeahead-inner" id="' + parts[0] + '">';
-                            html += '<div class="item-body">';
-                            html += '<p class="item-heading">' + parts[0] + '</p>';
-                            html += '</div>';
-                            html += '</div><hr></div>'; 
-
-
-
-                            return html;
-                        } , afterSelect: function (item) {
-                            console.log(item);
-                            console.log('afterSelect: ' + item.id);
-                            $j('.hiddenid').val(item.id); }
-                         ,
-                        updater: function(item) {
-                            var parts = item.split('#');
-                            window.location.assign("http://127.0.0.1:8000/recipe/view/"+parts[2]) ;
-
-                            return item={name:parts[0], id:parts[2]};
-
-                        } 
-
-
-
-                    }); });})
-        </script>
          <form class="navbar-form navbar-right" role="search">
                 <div class="form-group">
                     <input type="search" name="recipe[raw1]" class="search form-control" placeholder="Search recipes"  />
