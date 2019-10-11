@@ -10,6 +10,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\DependancyInjection\ContainerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 
 class BrowseController extends AbstractController
 {
@@ -19,7 +21,7 @@ class BrowseController extends AbstractController
      * @Route("/search", name="search")
      *  @return Response
      */
-    public function search(Request $request){
+    public function search(Request $request,PaginatorInterface $paginator){
         $sql1="SELECT b.id as Brand_id, b.brand_name as Brand_name, b.logo as logo, r.id as review_id, r.`comment` as review_comment ,r.stars as stars ,
         SUM(stars) as total_stars, 
         COUNT(*) as total_reviews, 
@@ -190,8 +192,13 @@ $stmt->execute();
 
 $result=$stmt->fetchAll();
 
+$pagination = $paginator->paginate(
+    $result, /* query NOT result */
+    $request->query->getInt('page', 1), /*page number*/
+    10 /*limit per page*/
+);
 
-    return $this->render('browse/search_result.html.twig', ['brand' => $result]);
+    return $this->render('browse/search_result.html.twig', ['brand' => $pagination]);
 
     }
 

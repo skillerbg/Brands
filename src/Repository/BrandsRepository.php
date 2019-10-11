@@ -27,7 +27,7 @@ class BrandsRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('b')
             ->orderBy('b.rating', 'DESC')
-            ->setMaxResults(10)
+            ->setMaxResults(9)
             ->getQuery()
             ->getResult()
         ;
