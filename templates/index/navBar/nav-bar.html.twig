@@ -60,7 +60,7 @@
                          ,
                         updater: function(item) {
                             var parts = item.split('#');
-                            window.location.assign("http://127.0.0.1:8000/brand/"+parts[1]) ;
+                            window.location.assign("/brand/"+parts[1]) ;
 
                             return item={name:parts[0], id:parts[2]};
 

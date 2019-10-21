@@ -62,7 +62,7 @@ class Brands
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $SubCategory1;
+    private $SubCategory;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -83,6 +83,31 @@ class Brands
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $SubCategory5;
+
+    /**
+     * @ORM\Column(type="string", length=2000, nullable=true)
+     */
+    private $description;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $wepagelink;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $facebooklink;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $twitterlink;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $instagramlink;
 
     public function __construct()
     {
@@ -205,18 +230,18 @@ class Brands
     public function setCategory(?string $Category): self
     {
         $this->Category = $Category;
-
+        
         return $this;
     }
 
-    public function getSubCategory1(): ?string
+    public function getSubCategory(): ?string
     {
-        return $this->SubCategory1;
+        return $this->SubCategory;
     }
 
-    public function setSubCategory1(?string $SubCategory1): self
+    public function setSubCategory(?string $SubCategory): self
     {
-        $this->SubCategory1 = $SubCategory1;
+        $this->SubCategory = $SubCategory;
 
         return $this;
     }
@@ -265,6 +290,66 @@ class Brands
     public function setSubCategory5(?string $SubCategory5): self
     {
         $this->SubCategory5 = $SubCategory5;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getWepagelink(): ?string
+    {
+        return $this->wepagelink;
+    }
+
+    public function setWepagelink(?string $wepagelink): self
+    {
+        $this->wepagelink = $wepagelink;
+
+        return $this;
+    }
+
+    public function getFacebooklink(): ?string
+    {
+        return $this->facebooklink;
+    }
+
+    public function setFacebooklink(?string $facebooklink): self
+    {
+        $this->facebooklink = $facebooklink;
+
+        return $this;
+    }
+
+    public function getTwitterlink(): ?string
+    {
+        return $this->twitterlink;
+    }
+
+    public function setTwitterlink(?string $twitterlink): self
+    {
+        $this->twitterlink = $twitterlink;
+
+        return $this;
+    }
+
+    public function getInstagramlink(): ?string
+    {
+        return $this->instagramlink;
+    }
+
+    public function setInstagramlink(?string $instagramlink): self
+    {
+        $this->instagramlink = $instagramlink;
 
         return $this;
     }

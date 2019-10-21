@@ -1,1 +1,3 @@
-$(".js-range-slider").ionRangeSlider();
+var $jslider = jQuery.noConflict();
+
+$jslider(".js-range-slider").ionRangeSlider();

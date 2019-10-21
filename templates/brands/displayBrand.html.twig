@@ -54,10 +54,10 @@
                     <div class="col-md-4">
                         <div class="profile-work">
                             <p>Contacts</p>
-                            <a href="">Website Link</a><br/>
-                            <a href="">Facebook page</a><br/>
-                            <a href="">Instagram page</a><br>
-                            <a href="">Twiiter page</a><br/>
+                            <a href="http://{{ brand.wepagelink }}">Webpage</a><br/>
+                            <a href="http://{{ brand.facebooklink }}">Facebook page</a><br/>
+                            <a href="http://{{ brand.instagramlink }}">Instagram page</a><br>
+                            <a href="http://{{ brand.twitterlink }}">Twiter page</a><br/>
                            
                             
                         </div>
@@ -66,42 +66,38 @@
                         <div class="tab-content profile-tab col-xl-9" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                        
-                                       <div class="row">
+                                       <div class="row" >
                                             <div class="col-md-6">
-                                                <label>Products</label>
+                                                <label>Category</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p> Products</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Founded</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p> Founded</p>
+                                                <p> {{ brand.category|nl2br }}</p>
                                             </div>
                                         </div>
+                                        {% if brand.subcategory %}
+
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Country</label>
+                                                <label>Sub category</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p> Country</p>
+                                                <p> {{ brand.subcategory|nl2br }}</p>
                                             </div>
                                         </div>
+                                        {% endif %}
+
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Owner</label>
+                                                <label>Average rating</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p> Owner</p>
+                                                <p> {{ brand.rating|round(1, 'floor') }}</p>
                                             </div>
                                         </div>
                                         
+                                       
                             </div>
-                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                Brand description
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">{{ brand.description}}
                             </div>
                         </div>
                     </div>
@@ -117,13 +113,13 @@
   <div class="row">
     <div class="col-sm-10 col-sm-offset-1" id="logout">
         <div class="page-header">
-            <h3 class="reviews">Leave your comment</h3>
+            <h3 class="reviews">Leave your review</h3>
             
         </div>
         <div class="comment-tabs">
             <ul class="nav nav-tabs" role="tablist">
-                <li class="active"><a href="#comments-logout" role="tab" data-toggle="tab"><h4 class="reviews text-capitalize">Comments</h4></a></li>
-                <li><a href="#add-comment" role="tab" data-toggle="tab"><h4 class="reviews text-capitalize">Add comment</h4></a></li>
+                <li class="active"><a href="#comments-logout" role="tab" data-toggle="tab"><h4 class="reviews text-capitalize">Reviews</h4></a></li>
+                <li><a href="#add-comment" role="tab" data-toggle="tab"><h4 class="reviews text-capitalize">Add review</h4></a></li>
             </ul>            
             <div class="tab-content">
                 <div class="tab-pane active" id="comments-logout">                

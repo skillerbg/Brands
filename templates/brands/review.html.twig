@@ -1,0 +1,26 @@
+
+                      <li class="media">
+                        <a class="pull-left" href="#">
+                          <img class="media-object img-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNLzZszQbQf6jkknIGI8A3rj-0BoEngyi9156njfrCjPED9_b2vw" alt="profile">
+                        </a>
+                        <div class="media-body">
+                          <div class="well well-lg">
+                              <h4 class="media-heading text-uppercase reviews"> {{ review.getUserId}} </h4>
+                               <ul class="media-date text-uppercase reviews list-inline">
+                                <li class="mm">
+                              <input id="input-1" name="input-1" class="rating rating-loading" data-min="0" data-max="5" data-step="0.1" value="{{ review.stars}}">
+                              </li>
+                              </ul>
+                              <ul class="media-date text-uppercase reviews list-inline">
+                                <li class="dd">{{ review.date|date('d')}}</li>
+                                <li class="mm">{{ review.date|date('m')}}</li>
+                                <li class="aaaa">{{ review.date|date('Y')}}</li>
+                              </ul>
+                              <p class="media-comment">
+                              <br>
+                               {{ review.comment}}
+                              </p>
+                                </div>              
+                        </div>
+                        
+                      </li>

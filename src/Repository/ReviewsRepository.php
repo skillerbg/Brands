@@ -36,15 +36,16 @@ class ReviewsRepository extends ServiceEntityRepository
     }
     */
 
-    /*
-    public function findOneBySomeField($value): ?Reviews
+    
+    public function userHasReview($brandId,$userId): ?Reviews
     {
         return $this->createQueryBuilder('r')
-            ->andWhere('r.exampleField = :val')
-            ->setParameter('val', $value)
+            ->andWhere('r.brand_id = :brand')
+            ->andWhere('r.user_id = :user')
+            ->setParameters(array('brand' => $brandId, 'user' => $userId))
             ->getQuery()
             ->getOneOrNullResult()
         ;
     }
-    */
+    
 }

@@ -18,6 +18,7 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
+    <script src="{{ asset('js/index.js')  }}" type="text/javascript"></script>
 
     <div class="container">
 
@@ -30,7 +31,7 @@
    
 
             <!-- Team member -->
-            <div class="col-xs-12 col-sm-6 col-md-4"  onclick="window.location = 'brand/{{brands.id}}'">
+            <div class="col-xs-12 col-sm-6 col-md-4 card-functions"  onclick="window.location = 'brand/{{brands.id}}'">
                 <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
                     <div class="mainflip">
                         <div class="frontside">
@@ -49,57 +50,51 @@
                                                                           
                                      <div class="row" style="width: 350px;">
                                             <div class="col-md-6">
-                                                <label>Products</label>
+                                                <label>Category</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p> Products</p>
+                                                <p> {{ brands.category|nl2br }}</p>
                                             </div>
                                         </div>
+                                        {% if brands.subcategory %}
+
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Founded</label>
+                                                <label>Sub category</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p> Founded</p>
+                                                <p> {{ brands.subcategory|nl2br }}</p>
                                             </div>
                                         </div>
+                                        {% endif %}
+
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Country</label>
+                                                <label>Average rating</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p> Country</p>
+                                                <p> {{ brands.rating|round(1, 'floor') }}</p>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Owner</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p> Owner</p>
-                                            </div>
-                                        </div>
+                                        
                                     <ul class="list-inline">
+                                    
                                         <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="#">
+                                            <a class="social-icon text-xs-center" target="_blank" href="http://{{ brands.facebooklink }}">
                                                 <i class="fa fa-facebook"></i>
                                             </a>
                                         </li>
                                         <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="#">
+                                            <a class="social-icon text-xs-center" target="_blank" href="http://{{ brands.twitterlink }}">
                                                 <i class="fa fa-twitter"></i>
                                             </a>
                                         </li>
                                         <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="#">
-                                                <i class="fa fa-skype"></i>
+                                            <a class="social-icon text-xs-center" target="_blank" href="http://{{ brands.instagramlink }}">
+                                                <i class="fa fa-instagram"></i>
                                             </a>
                                         </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="#">
-                                                <i class="fa fa-google"></i>
-                                            </a>
-                                        </li>
+                                        
                                     </ul>
                                 </div>
                             </div>
