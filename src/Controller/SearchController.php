@@ -3,13 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Brands;
-use App\Entity\Reviews;
-use App\Form\BrandsType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Doctrine\ORM\EntityManagerInterface;
 
 class SearchController extends AbstractController
 {
@@ -22,17 +19,18 @@ class SearchController extends AbstractController
      */
     public function create(Request $request)
     {
-      return $this->render('index/navBar/search_field.html.twig');
+        return $this->render('index/navBar/search_field.html.twig');
 
     }
- /**
+    /**
      * @param Request $request
      * @Route("raw/search", name="searching")
      *
 
      */
 
-    public function search(Request $request)//search the Db for brfands entities with the ajax params
+    public function search(Request $request) //search the Db for brand entities with the ajax params
+
     {
 
         $entityManager = $this->getDoctrine()->getManager();

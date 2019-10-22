@@ -46,7 +46,61 @@ class BrandsRepository extends ServiceEntityRepository
      */
     public function browseBrands($request)
     {
-        $sql1 = "SELECT b.id as Brand_id, b.brand_name as Brand_name, b.logo as logo, r.id as review_id, r.`comment` as review_comment ,r.stars as stars ,
+        //String used as 'WHERE' clause for the sql query
+        $sql = "";
+
+        //check if the filter is set
+        if ($filter = $request->query->get('filter')) {
+            //check if options have been selected in the filter
+            if (!count(array_filter($filter)) == 0) {
+
+                $sql = "WHERE ";
+                //Check if the user is searching for brands by name
+                if ($keyWords = $filter["keyWords"]) {
+                    $sql = $sql . " Brand_name LIKE '%" . $keyWords . "%'";
+                };
+
+                $filterOption = "gender"; //First filter option we'll be checking if the user has chosen
+                $andOr = ')AND('; //'AND' or 'OR' string to be placed in the query
+                $arr = array($filter, $filterOption, $sql, $andOr);//create an array to be used in a function
+
+                //Loop through the filter options
+                foreach (array('gender' => array('f', 'm'),
+                    'household' => array('single', 'maried', 'widowed', 'divorced', 'separated'),
+                    'employment' => array('employed', 'self', 'unemployed', 'student', 'retired', 'unable'),
+                    'education' => array('middle', 'high', 'college', 'bachelor', 'master', 'pro', 'doc'),
+                ) as $key => $filterOption2) {
+                    $arr[1] = $key;
+                    $arr[3] = ')AND(';
+                    foreach ($filterOption2 as $filterVariable) {
+                        //check if the filter option is selected and update the WHERE clause string
+                        $arr = $this->matchFilterOption($filterVariable, $arr);
+                    }
+                }
+                //Adds the min and max age to the query
+                $sql = $arr[2];
+                if ($filter["minAge"]) {
+                    $minAge = intval($filter["minAge"]);
+                    if (strlen($sql) > 10) {$sql = $sql . " )AND( ";}
+                    $sql = $sql . "age > '{$minAge}'";
+                }
+                if ($filter["maxAge"]) {
+                    $maxAge = intval($filter["maxAge"]);
+                    if (strlen($sql) > 10) {$sql = $sql . " )AND( ";}
+                    $sql = $sql . "age < '{$maxAge}'";
+                }
+            };
+        }
+
+        //Replace the '(' added by the last filter option with ')'
+        if (strlen($sql) > 10) {
+            $sql = substr_replace($sql, "(", 5, 0);
+            $sql = $sql . ")";
+        }
+
+        //Add the WHERE clause we created to the rest of the query
+        $sql =
+            "SELECT b.id as Brand_id, b.brand_name as Brand_name, b.logo as logo, r.id as review_id, r.`comment` as review_comment ,r.stars as stars ,
         SUM(stars) as total_stars,
         COUNT(*) as total_reviews,
         cast(SUM(stars)/COUNT(*) AS DECIMAL(5,1))
@@ -55,115 +109,32 @@ class BrandsRepository extends ServiceEntityRepository
             INNER JOIN reviews r ON b.id = r.brand_id_id
             INNER JOIN fos_user u ON r.user_id_id =u.id
 
+        " . $sql . "
+        GROUP BY b.id
+        ORDER BY average_rating DESC;
         ";
-        $sql2 = "";
-
-        if ($filter = $request->query->get('filter')) {
-            if (!count(array_filter($filter)) == 0) {
-                $sql2 = "WHERE ";
-
-                if ($keyWords = $filter["keyWords"]) {
-                    $sql2 = $sql2 . " Brand_name LIKE '%" . $keyWords . "%'";
-                };
-                $filterOption = "gender";
-                $andOr = ')AND(';
-                $arr = array($filter,$filterOption, $sql2,$andOr);
-                $arr = $this->matchFilterOpetion('f', $arr );
-                $arr = $this->matchFilterOpetion('m', $arr);
-
-                $arr[1] = "household";
-                $arr[3] = ')AND(';
-
-                $arr = $this->matchFilterOpetion('single', $arr);
-                $arr = $this->matchFilterOpetion('maried', $arr);
-                $arr = $this->matchFilterOpetion('widowed', $arr);
-                $arr = $this->matchFilterOpetion('divorced', $arr);
-                $arr = $this->matchFilterOpetion('separated', $arr);
-
-                $arr[1] = "employment";
-                $arr[3] = ')AND(';
-
-                $arr = $this->matchFilterOpetion('employed', $arr);
-
-                $arr = $this->matchFilterOpetion('self', $arr);
-
-                $arr = $this->matchFilterOpetion('unemployed', $arr);
-
-                $arr = $this->matchFilterOpetion('student', $arr);
-
-                $arr = $this->matchFilterOpetion('retired', $arr);
-
-                $arr = $this->matchFilterOpetion('unable', $arr);
-
-                $arr[1] = "education";
-                $arr[3] = ')AND(';
-
-                $arr = $this->matchFilterOpetion('middle', $arr);
-
-                $arr = $this->matchFilterOpetion('high', $arr);
-
-                $arr = $this->matchFilterOpetion('college', $arr);
-
-                $arr = $this->matchFilterOpetion('bachelor', $arr);
-
-                $arr = $this->matchFilterOpetion('master', $arr);
-
-                $arr = $this->matchFilterOpetion('pro', $arr);
-
-                $arr = $this->matchFilterOpetion('doc', $arr);
-              $sql2=$arr[2];
-
-                 
-                if ($filter["minAge"]) {
-                    $minAge = intval($filter["minAge"]);
-
-                    if (strlen($sql2) > 10) {$sql2 = $sql2 . " )AND( ";}
-                    $sql2 = $sql2 . "age > '{$minAge}'";
-                }
-                if ($filter["maxAge"]) {
-                    $maxAge = intval($filter["maxAge"]);
-
-                    if (strlen($sql2) > 10) {$sql2 = $sql2 . " )AND( ";}
-                    $sql2 = $sql2 . "age < '{$maxAge}'";
-                }
-
-            };
-        }
-
-        if (strlen($sql2) > 10) {
-
-            $sql2 = substr_replace($sql2, "(", 5, 0);
-
-            $sql2 = $sql2 . ")";
-        }
-
-        $sql3 = "
-    GROUP BY b.id
-    ORDER BY average_rating DESC;
-    ";
-        $sql = $sql1 . $sql2 . $sql3;
         $conn = $this->getEntityManager()->getConnection();
         $stmt = $conn->prepare($sql);
         $stmt->execute();
-
         $result = $stmt->fetchAll();
+
+        //return brand entities ranked by the chosen filter parameters
         return $result;
 
     }
-    public function matchFilterOpetion($option, $arr)
+
+    public function matchFilterOption($option, $arr)
     {$filterOption = $arr[1];
         $filter = $arr[0];
-     
-        if (in_array($option,
-            $filter[$filterOption]
-        )) {
-            $sql2=$arr[2];
+
+        if (in_array($option, $filter[$filterOption])) {
+            $sql = $arr[2];
             if (strlen($arr[2]) > 10) {
-                $sql2 = $sql2 . " " . $arr[3] . " ";
+                $sql = $sql . " " . $arr[3] . " ";
             }
             $arr[3] = "OR";
-            $sql2 = $sql2 . $arr[1] . " = '" . $option."'";
-            $arr[2]=$sql2;
+            $sql = $sql . $arr[1] . " = '" . $option . "'";
+            $arr[2] = $sql;
         }
         return $arr;
     }

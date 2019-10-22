@@ -8,9 +8,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Doctrine\ORM\EntityManagerInterface;
-
-
 
 class BrowseController extends AbstractController
 {
@@ -21,13 +18,16 @@ class BrowseController extends AbstractController
  *  @return Response
  */
     public function search(Request $request, PaginatorInterface $paginator)
-    {  
+    {
         $entityManager = $this->getDoctrine()->getManager();
+        //Get the brand entities ranked by the given filter
         $repository = $entityManager
             ->getRepository(Brands::class);
         $result = $repository->browseBrands($request);
+
+        //Sort the result in pages
         $pagination = $paginator->paginate(
-            $result, /* query NOT result */
+            $result,
             $request->query->getInt('page', 1), /*page number*/
             10/*limit per page*/
         );
